@@ -1,6 +1,6 @@
 # CycloPredict - Prédiction des Flux Cyclistes Bordeaux-Campus
 ## Présentation
-Modélisation et prédiction des flux cyclistes sur l'axe Bordeaux (Barrière de Toulouse) — Campus (Pessac Haut-Lévêque). Ce MVP utilise un réseau de neurones pour estimer la "cyclabilité" de mobilité universitaire.
+prédiction des flux cyclistes sur l'axe Bordeaux (Barrière de Toulouse) — Campus (Pessac Haut-Lévêque). Ce MVP utilise un réseau de neurones pour estimer la "cyclabilité" de mobilité universitaire.
 
 ## Architecture des Scripts
     01_get_data.py : Extraction des données (Open Data Bordeaux Métropole).
@@ -27,3 +27,9 @@ Modélisation et prédiction des flux cyclistes sur l'axe Bordeaux (Barrière de
     python scripts/02_preprocess.py
     python scripts/04_train_mlp.py
     python scripts/05_plot_results.py
+
+## Résultats du MVP
+* **MAE** : 2.39 (Erreur moyenne de ~2 vélos/heure).
+* **RMSE** : 4.65.
+
+![Comparaison Réel vs Prédit](plots/results_plot.png)
