@@ -1,35 +1,35 @@
-# CycloPredict - Prédiction des Flux Cyclistes Bordeaux-Campus
+# CycloPredict - Prédiction des Flux Cyclistes
+
 ## Présentation
-prédiction des flux cyclistes sur l'axe Bordeaux (Barrière de Toulouse) — Campus (Pessac Haut-Lévêque). Ce MVP utilise un réseau de neurones pour estimer la "cyclabilité" de mobilité universitaire.
+Estimation du trafic cycliste entre la Barrière de Toulouse (Bordeaux) et Haut-Lévêque (Pessac). Ce projet permet d'anticiper la fréquentation sur cet axe universitaire.
 
-## Architecture des Scripts
-    01_get_data.py : Extraction des données (Open Data Bordeaux Métropole).
+## Données
+Les données proviennent de l'**Open Data de Bordeaux Métropole**. Nous utilisons les comptages des stations Totem et Haut-Lévêque.
 
-    02_preprocess.py : Nettoyage et Feature Engineering (ex : variables cycliques, lags temporels).
+## Méthode
+Le modèle est un réseau de neurones qui s'appuie sur :
+* L'heure et le jour de la semaine.
+* Le calendrier des jours fériés (via la librairie `holidays`).
+* Le trafic observé une heure et un jour auparavant.
 
-    04_train_mlp.py : Entraînement du modèle MLPRegressor et normalisation.
-
-    05_plot_results.py : Visualisation des performances sur le set de test.
-
-## stack technique 
-* Langage : Python 3.12+
-
-* Machine Learning : Scikit-learn (MLPRegressor), Pandas.
-
-* Visualisation : Matplotlib.
-
-* Persistance : Joblib.
-
-## Installation et usage
-    pip install -r requirements.txt
-    # Exécution du pipeline
-    python scripts/01_get_data.py
-    python scripts/02_preprocess.py
-    python scripts/04_train_mlp.py
-    python scripts/05_plot_results.py
-
-## Résultats du MVP
-* **MAE** : 2.39 (Erreur moyenne de ~2 vélos/heure).
+## Résultats
+Le modèle MVP affiche les scores suivants :
+* **MAE** : 2.39 (erreur moyenne de ~2 vélos par heure).
 * **RMSE** : 4.65.
 
-![Comparaison Réel vs Prédit](plots/results_plot.png)
+![Graphique des résultats](plots/results_plot.png)
+
+## Bibliothèques utilisées
+* pandas
+* scikit-learn
+* matplotlib
+* requests
+* joblib
+* holidays
+
+## Installation et Usage
+L'installation et le lancement sont automatisés via le **Makefile** :
+
+```bash
+make setup  # Installer les dependances
+make run    # Lancer le projet
